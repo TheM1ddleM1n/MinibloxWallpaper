@@ -2,7 +2,7 @@
 // @name          Change miniblox.io wallpaper (CSS Injection)
 // @namespace     http://codeberg.org/ee6-lang
 // @description   Replace wallpaper by injecting a CSS rule!
-// @author        Vicky_arut, ee6-lang
+// @author        Vicky_arut, ee6-lang/Coldmc33
 // @match         https://miniblox.io/
 // @grant         none
 // @run-at        document-start
