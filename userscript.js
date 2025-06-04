@@ -1,13 +1,13 @@
 // ==UserScript==
-// @name          Change miniblox.io wallpaper (CSS Inject)
+// @name          Change miniblox.io wallpaper (CSS Injection)
 // @namespace     http://codeberg.org/ee6-lang
-// @description   Replace wallpaper by injecting a CSS rule
+// @description   Replace wallpaper by injecting a CSS rule!
 // @author        Vicky_arut, ee6-lang
-// @match         https://miniblox.io/*
+// @match         https://miniblox.io/
 // @grant         none
 // @run-at        document-start
 // @license       Redistribution prohibited
-// @version       0.0.3
+// @version       0.0.4
 // ==/UserScript==
 
 (function() {
