@@ -14,7 +14,7 @@
     'use strict';
 
     // new wallpaper (gif possible!!)
-    const newImageUrl = 'https://i.imgur.com/ksDMmoT.jpeg';
+    const newImageUrl = 'https://i.imgur.com/Vdtct7v.jpeg';
 
     // The selector for the element that has the wallpaper.
     // You might need to adjust this if miniblox.io uses a different element.
