@@ -1,3 +1,4 @@
-this is what it should look like 
+this is what it should look like (new BACKGROUND!)
 
-![Screenshot 2025-06-03 20 33 08](https://github.com/user-attachments/assets/0268f486-4122-4b04-82c7-a7b722869b43)
+
+![Screenshot 2025-06-07 19 09 14](https://github.com/user-attachments/assets/7ebe7ed4-4caf-4798-81f6-44c63fc8ecd3)
