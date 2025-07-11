@@ -7,7 +7,7 @@
 // @grant         none
 // @run-at        document-start
 // @license       Redistribution prohibited
-// @version       0.0.5
+// @version       1.1
 // ==/UserScript==
 
 (function() {
