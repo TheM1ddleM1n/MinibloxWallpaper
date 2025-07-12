@@ -1,80 +1,99 @@
 // ==UserScript==
-// @name          Change miniblox.io wallpaper (CSS Injection)
+// @name          Change miniblox.io wallpaper (CSS Injection + Config UI + Persistence)
 // @namespace     http://codeberg.org/ee6-lang
-// @description   Replace wallpaper by injecting a CSS rule!
+// @description   Replace wallpaper by injecting a CSS rule, with UI and persistent config
 // @author        Vicky_arut, ee6-lang/Coldmc33
 // @match         https://miniblox.io/
 // @grant         none
 // @run-at        document-start
 // @license       Redistribution prohibited
-// @version       1.1
+// @version       1.5
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    // new wallpaper (gif possible!!)
-    const newImageUrl = 'https://i.imgur.com/Vdtct7v.jpeg';
+    const defaultImageUrl = 'https://i.imgur.com/Vdtct7v.jpeg';
+    const savedUrl = localStorage.getItem('customWallpaperUrl');
+    let currentWallpaperUrl = savedUrl ? savedUrl : defaultImageUrl;
 
-    // The selector for the element that has the wallpaper.
-    // You might need to adjust this if miniblox.io uses a different element.
-    // Common candidates: 'body', 'html', '#app', or a specific container div.
-    const wallpaperSelector = 'body'; // Start with 'body', it's often the main background.
-
-    // Create a style element
     const style = document.createElement('style');
     style.type = 'text/css';
-    style.innerHTML = `
-        ${wallpaperSelector} {
-            background-image: url('${newImageUrl}') !important;
-            background-size: cover !important; /* Ensures the image covers the whole area */
-            background-position: center center !important; /* Centers the image */
-            background-repeat: no-repeat !important; /* Prevents repeating */
-        }
-        /* If there's an overlay or another element obscuring, you might need to target it */
-        /* For example, if there's a div with a semi-transparent background: */
-        /*
-        div[style*="default-DKNlYibk.png"] {
-            background-image: url('${newImageUrl}') !important;
-            background-size: cover !important;
-            background-position: center center !important;
-            background-repeat: no-repeat !important;
-        }
-        */
-        /* If an <img> tag is the wallpaper, you can hide it or override its source */
-        img[src*="/assets/default-DKNlYibk.png"] {
-            display: none !important; /* Hide the original image */
-            /* Or try overriding its src directly, though CSS background is often better for wallpapers */
-            /* content: url('${newImageUrl}') !important; */
-        }
-    `;
-
-    // Append the style element to the head or body
     document.head.appendChild(style);
 
-    // --- Original MutationObserver (keep for completeness, but CSS inject is primary) ---
-    // The MutationObserver part might still be useful if images are loaded *after* initial CSS
-    // or for other elements, but the CSS injection is generally more robust for backgrounds.
+    function applyWallpaper(url) {
+        currentWallpaperUrl = url;
+        style.innerHTML = `
+            body {
+                background-image: url('${url}') !important;
+                background-size: cover !important;
+                background-position: center center !important;
+                background-repeat: no-repeat !important;
+            }
+            img[src*="/assets/default-DKNlYibk.png"] {
+                display: none !important;
+            }
+        `;
+    }
+
+    applyWallpaper(currentWallpaperUrl);
+
     const observer = new MutationObserver((mutations) => {
         mutations.forEach(() => {
-            const images = document.querySelectorAll('img');
-            images.forEach((img) => {
+            document.querySelectorAll('img').forEach((img) => {
                 if (img.src.includes('/assets/default-DKNlYibk.png')) {
-                    img.src = newImageUrl; // Replace image
+                    img.src = currentWallpaperUrl;
                 }
             });
-
-            const backgroundElements = document.querySelectorAll('[style*="default-DKNlYibk.png"]');
-            backgroundElements.forEach((element) => {
-                element.style.backgroundImage = `url(${newImageUrl})`;
+            document.querySelectorAll('[style*="default-DKNlYibk.png"]').forEach((element) => {
+                element.style.backgroundImage = `url('${currentWallpaperUrl}')`;
             });
         });
     });
 
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-        attributes: true // Also observe attribute changes, in case style is added/changed
-    });
+    window.addEventListener('DOMContentLoaded', () => {
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true
+        });
 
+        const configBox = document.createElement('div');
+        configBox.style = `
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #f1f1f1;
+            color: #222;
+            padding: 12px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 9999;
+            font-family: sans-serif;
+        `;
+        configBox.innerHTML = `
+            <label>Wallpaper URL:</label><br>
+            <input type="text" id="wallpaperUrl" value="${currentWallpaperUrl}" placeholder="Enter image URL" style="width: 200px; margin: 5px 0;"><br>
+            <button id="applyWallpaper" style="margin-top: 5px;">Apply</button>
+            <button id="resetWallpaper" style="margin-top: 5px; margin-left: 5px;">Reset</button>
+        `;
+        document.body.appendChild(configBox);
+
+        document.getElementById('applyWallpaper').onclick = () => {
+            const url = document.getElementById('wallpaperUrl').value;
+            if (url) {
+                localStorage.setItem('customWallpaperUrl', url);
+                applyWallpaper(url);
+                alert("Wallpaper has been changed");
+                location.reload();
+            }
+        };
+
+        document.getElementById('resetWallpaper').onclick = () => {
+            localStorage.removeItem('customWallpaperUrl');
+            applyWallpaper(defaultImageUrl);
+            alert("Wallpaper reset to default");
+            location.reload();
+        };
+    });
 })();
