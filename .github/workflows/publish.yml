@@ -1,0 +1,33 @@
+name: Release Userscript
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - miniblox.user.js  # replace with your actual script filename
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}
+          name: "Release ${{ github.run_number }}"
+          body: "Auto-published MiniBloxWallpaper userscript update."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Script
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}
+          files: miniblox.user.js  # replace with your actual script filename
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
