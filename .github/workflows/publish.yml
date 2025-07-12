@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - miniblox.user.js  # replace with your actual script filename
+      - miniblox.user.js
 
 jobs:
   publish:
