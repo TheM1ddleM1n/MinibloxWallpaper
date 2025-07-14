@@ -13,6 +13,7 @@
 (function() {
     'use strict';
 
+    // Change this URL to smth else if you want (use imgur)
     const defaultImageUrl = 'https://i.imgur.com/Vdtct7v.jpeg';
     const savedUrl = localStorage.getItem('customWallpaperUrl');
     let currentWallpaperUrl = savedUrl ? savedUrl : defaultImageUrl;
