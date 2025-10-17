@@ -1,0 +1,28 @@
+name: Auto Commit
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  commit-changes:
+    runs-on: ubuntu-latest
+    # Prevent infinite loop by checking commit message
+    if: "!contains(github.event.head_commit.message, 'chore: auto-update')"
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Make changes
+        run: |
+          echo "// updated at $(date)" >> miniblox.user.js
+
+      - name: Auto commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-update wallpaper script"
+          file_pattern: miniblox.user.js
