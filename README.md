@@ -125,5 +125,3 @@ Redistribution prohibited. For personal use only.
 ---
 
 Made with ❤️ for the MiniBlox community!
-
-[![Release Userscript](https://github.com/ModuleMaster64/MinibloxWallpaper/actions/workflows/publish.yml/badge.svg?branch=main&event=release)](https://github.com/ModuleMaster64/MinibloxWallpaper/actions/workflows/publish.yml)
