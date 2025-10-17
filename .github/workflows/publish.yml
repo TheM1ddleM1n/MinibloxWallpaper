@@ -2,10 +2,9 @@ name: Release Userscript
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - miniblox.user.js
+    tags:
+      - 'v*.*.*'  # Only trigger on version tags like v1.0.0
+  workflow_dispatch:  # Allow manual trigger
 
 jobs:
   publish:
@@ -15,19 +14,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Extract version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ github.run_number }}
-          name: "Release ${{ github.run_number }}"
-          body: "Auto-published MiniBloxWallpaper userscript update."
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload Script
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v${{ github.run_number }}
-          files: miniblox.user.js  # replace with your actual script filename
+          tag_name: ${{ github.ref_name }}
+          name: "Release ${{ steps.get_version.outputs.VERSION }}"
+          body: |
+            ## MiniBlox Wallpaper Update v${{ steps.get_version.outputs.VERSION }}
+            
+            ### Installation
+            Click the asset below to install/update the userscript.
+            
+            ### Changes
+            See commit history for detailed changes.
+          files: miniblox.user.js
+          draft: false
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
