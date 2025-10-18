@@ -1,18 +1,16 @@
 # 🎨 Ultimate MiniBlox Wallpaper
 
-A powerful userscript that lets you customize your MiniBlox.io experience with custom wallpapers, real-time effects, and presets!
+A powerful userscript that lets you customize your MiniBlox.io experience with custom wallpapers and presets!
 
 [![Release Userscript](https://github.com/TheM1ddleM1n/MinibloxWallpaper/actions/workflows/publish.yml/badge.svg?branch=main&event=release)](https://github.com/TheM1ddleM1n/MinibloxWallpaper/actions/workflows/publish.yml)
 
 ## ✨ Features
 
 - 🖼️ **Custom Wallpapers** - Use any image URL as your background
-- 🎭 **Real-time Effects** - Adjust blur and brightness with live preview
 - 🎨 **8 Built-in Presets** - Quick access to beautiful wallpapers
 - 👁️ **Live Preview** - See changes before applying them
 - ⚡ **Instant Updates** - No page reload needed
-- ⌨️ **Keyboard Shortcut** - Toggle panel with `Ctrl+Shift+W`
-- 🔄 **Smooth Transitions** - Beautiful animations and effects
+- ⌨️ **Keyboard Shortcut** - Toggle panel with `\\`
 - ✅ **URL Validation** - Prevents broken images from being saved
 - 💾 **Persistent Settings** - Your preferences are saved automatically
 
@@ -33,7 +31,7 @@ A powerful userscript that lets you customize your MiniBlox.io experience with c
 
 ### Opening the Config Panel
 - The config panel appears in the top-right corner when you visit MiniBlox.io
-- Press `Ctrl+Shift+W` to toggle the panel at any time
+- Press `\\` to toggle the panel at any time
 - Click the `−` button to minimize the panel
 
 ### Changing Your Wallpaper
@@ -41,20 +39,12 @@ A powerful userscript that lets you customize your MiniBlox.io experience with c
 **Option 1: Use a Preset**
 1. Open the config panel
 2. Select a preset from the dropdown menu
-3. Adjust blur and brightness to your liking
 4. Click "Apply"
 
 **Option 2: Custom URL**
 1. Paste an image URL into the "Wallpaper URL" field
 2. Watch the preview update in real-time
-3. Adjust effects with the sliders
 4. Click "Apply" when satisfied
-
-### Effects
-
-- **Blur Slider**: 0-20px blur effect
-- **Brightness Slider**: 30-150% brightness adjustment
-- Both sliders update the preview in real-time!
 
 ### Resetting
 
@@ -85,17 +75,14 @@ Click the "Reset" button to restore default settings (removes all saved preferen
 - ✨ Added real-time preview updates
 - ✨ Image URL validation with loading indicator
 - ✨ Collapsible config panel
-- ✨ Keyboard shortcut (Ctrl+Shift+W)
+- ✨ Keyboard shortcut (\\)
 - ✨ 4 new wallpaper presets
 - ✨ Smooth transitions and animations
-- ✨ Improved blur range (0-20px)
 - ✨ Better UI with visual feedback
-- 🐛 Fixed background blur affecting content
 - 🐛 Removed unnecessary page reloads
 
 ### v3.1
 - Custom wallpaper URLs
-- Blur and brightness controls
 - 4 preset wallpapers
 - Preview functionality
 
