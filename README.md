@@ -83,7 +83,7 @@ Click the "Reset" button to restore default settings (removes all saved preferen
 - ✨ Better UI with visual feedback
 - 🐛 Removed unnecessary page reloads
 
-### v3.1
+### v3
 - Custom wallpaper URLs
 - 4 preset wallpapers
 - Preview functionality
@@ -91,15 +91,15 @@ Click the "Reset" button to restore default settings (removes all saved preferen
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
-- Report bugs
-- Suggest new features
+- Report any bugs you spot
+- Suggest any new features you want to see! 
 - Submit pull requests
-- Share your favorite wallpaper URLs
+- Share your favorite wallpaper URLs lol!
 
 ## 👥 Credits
 
-- **Original Author**: Vicky_arut
-- **Enhanced by**: TheM1ddleM1n
+- **Original Author**: Vicky_arut (Greasyfork) shout out!
+- **Enhanced by**: TheM1ddleM1n (Github user)
 
 ## 📜 License
 
