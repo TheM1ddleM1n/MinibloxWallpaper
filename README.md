@@ -22,8 +22,7 @@ A powerful userscript that lets you customize your MiniBlox.io experience with c
    - [Greasemonkey](https://www.greasespot.net/) (Firefox)
 
 2. **Install the script:**
-   - Click [here](https://github.com/TheM1ddleM1n/MinibloxWallpaper/releases/latest/download/miniblox.user.js) to install
-   - Or copy the script from `miniblox.user.js` and create a new userscript
+   - Copy the script from `userscript.js` and create a new userscript
 
 3. **Visit [MiniBlox.io](https://miniblox.io/)** and enjoy!
 
