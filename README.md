@@ -70,6 +70,9 @@ Click the "Reset" button to restore default settings (removes all saved preferen
 
 ## 📝 Changelog
 
+### v5.1 (LATEST+)
+- still working on logic for saving wallpapers via history
+
 ### v4.0 (Latest)
 - ✨ Added real-time preview updates
 - ✨ Image URL validation with loading indicator
@@ -110,4 +113,8 @@ Redistribution prohibited. For personal use only.
 
 ---
 
-Made with ❤️ for the MiniBlox community!
+Made with ❤️ for the Miniblox Community!
+
+<img width="1365" height="767" alt="Screenshot 2025-10-18 10 32 31" src="https://github.com/user-attachments/assets/c1de268e-a524-42b5-beba-a4d75b79c709" />
+
+
