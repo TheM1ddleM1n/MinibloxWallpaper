@@ -62,18 +62,18 @@ Click the "Reset" button to restore default settings (removes all saved preferen
 
 ## 🛠️ Technical Details
 
-- **Version**: 4.0
-- **Compatible with**: MiniBlox.io
+- **Version**: 5.1
+- **Compatible with**: https://miniblox.io/
 - **Storage**: Uses localStorage for persistence
 - **No reload required**: All changes apply instantly
 - **Image validation**: Prevents invalid URLs from breaking your setup
 
 ## 📝 Changelog
 
-### v5.1 (LATEST+)
+### v5.1 (LATEST UPDATE+)
 - still working on logic for saving wallpapers via history
 
-### v4.0 (Latest)
+### v4.0
 - ✨ Added real-time preview updates
 - ✨ Image URL validation with loading indicator
 - ✨ Collapsible config panel
