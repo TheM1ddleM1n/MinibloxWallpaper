@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Ultimate MB.io Wallpaper Enhanced
-// @namespace    http://codeberg.org/TheM1ddleM1n
+// @namespace    http://github.com/TheM1ddleM1n
 // @description  Custom wallpaper + preview + presets + real-time updates
 // @author       Vicky_arut, TheM1ddleM1n
 // @match        https://miniblox.io/
