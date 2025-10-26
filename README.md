@@ -16,17 +16,17 @@ A powerful userscript that lets you customize your MiniBlox.io experience with c
 
 ## 🚀 Installation
 
-1. **Install a userscript manager:**
+1. **Install any userscript manager:**
    - [Tampermonkey](https://www.tampermonkey.net/) (Chrome, Firefox, Safari, Edge)
    - [Violentmonkey](https://violentmonkey.github.io/) (Chrome, Firefox, Edge)
    - [Greasemonkey](https://www.greasespot.net/) (Firefox)
 
-2. **Install the script:**
+2. **Install the script from..**
    - Copy the script from `userscript.js` and create a new userscript
 
 3. **Visit [MiniBlox.io](https://miniblox.io/)** and enjoy!
 
-## 🎮 Usage
+## 🎮 The usage of this.
 
 ### Opening the Config Panel
 - The config panel appears in the top-right corner when you visit MiniBlox.io
