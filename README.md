@@ -3,18 +3,17 @@
 [![Version](https://img.shields.io/github/v/release/TheM1ddleM1n/MinibloxWallpaper?color=4CAF50&label=version)](https://github.com/TheM1ddleM1n/MinibloxWallpaper/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/TheM1ddleM1n/MinibloxWallpaper/total?color=2196F3&label=downloads)](https://github.com/TheM1ddleM1n/MinibloxWallpaper/releases)
 
-A powerful **userscript** that transforms your [MiniBlox.io](https://miniblox.io/) experience with **automatically rotating custom wallpapers**!  
+A powerful **userscript** that transforms your [miniblox.io](https://miniblox.io/) experience with **automatically rotating custom wallpapers**!  
 Enjoy a massive curated collection of stunning HD backgrounds — refreshed every time you load the game.
 
 ---
 
 ## ⚙️ Features
 
-✅ **Automatic Wallpaper Rotation** — A new wallpaper on every reload  
-✅ **Massive Collection** — 100+ HD backgrounds from trusted sources  
-✅ **Lightweight & Seamless** — Loads quickly without slowing gameplay  
-✅ **Customizable Mode** — Choose between sequential or random rotation  
-✅ **No GUI Needed** — Just install and enjoy the view  
+✅ **Automatic Wallpaper Rotation** — A brand new wallpaper on every reload! 
+✅ **Massive Collection** — 100+ HD backgrounds from trusted sources!
+✅ **Lightweight & Seamless** — Loads quickly without slowing gameplay!  
+✅ **Customizable Mode** — Choose between sequential or random rotation! 
 
 ---
 
