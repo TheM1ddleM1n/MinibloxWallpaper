@@ -61,3 +61,12 @@ Huge thanks to the **MiniBlox community** for feedback and support ❤️
 ---
 
 Made with ❤️, for the community!
+
+💡 Tip for users who want to add their own wallpapers:
+Paste this in console once:
+```
+localStorage.setItem('miniblox_custom_wallpapers', JSON.stringify([
+  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
+  'https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6'
+]));
+```
