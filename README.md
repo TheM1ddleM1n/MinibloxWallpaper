@@ -11,8 +11,11 @@ Enjoy a massive curated collection of stunning HD backgrounds — refreshed ever
 ## ⚙️ Features
 
 ✅ **Automatic Wallpaper Rotation** — A brand new wallpaper on every reload! 
+
 ✅ **Massive Collection** — 100+ HD backgrounds from trusted sources!
-✅ **Lightweight & Seamless** — Loads quickly without slowing gameplay!  
+
+✅ **Lightweight & Seamless** — Loads quickly without slowing gameplay! 
+
 ✅ **Customizable Mode** — Choose between sequential or random rotation! 
 
 ---
