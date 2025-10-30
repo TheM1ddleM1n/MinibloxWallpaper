@@ -42,7 +42,7 @@ You can:
 
 ## 👥 Credits
 
-- **Original Author:** **[Vicky_arut](https://greasyfork.org/en/users/1000000)** *(GreasyFork)*  
+- **Original Author:** **[Vicky_arut](https://greasyfork.org/en/users/1371112-vicky-arut)** *(GreasyFork)*  
 - **Enhanced by:** **[TheM1ddleM1n](https://github.com/TheM1ddleM1n)** *(GitHub)*  
 
 Huge thanks to the **MiniBlox community** for feedback and support ❤️  
