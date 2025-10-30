@@ -23,7 +23,7 @@ Enjoy a massive curated collection of stunning HD backgrounds — refreshed ever
 ## 🛠️ Installation
 
 1. Install a userscript manager like **[Tampermonkey](https://tampermonkey.net/)** or **[Violentmonkey](https://violentmonkey.github.io/)**  
-2. [Click here to install the script](https://github.com/TheM1ddleM1n/MinibloxWallpaper/raw/main/userscript.js)  
+2. **[Click here to install the script](https://github.com/TheM1ddleM1n/MinibloxWallpaper/raw/main/userscript.js)**  
 3. Visit [miniblox.io](https://miniblox.io) and refresh — your new wallpaper will appear automatically 🎉  
 
 ---
