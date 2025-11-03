@@ -147,7 +147,7 @@ A: Yes! Use `minibloxWallpaper.set([...])` in the console with your image URLs.
 A: The script works on mobile browsers that support userscript managers (e.g., Firefox + Tampermonkey).
 
 **Q: Why do some wallpapers load slowly?**  
-A: Images are preloaded automatically. If you have slow internet, the first load may take a moment.
+A: All 20 wallpapers are preloaded automatically on first visit. After that, they're cached and load instantly!
 
 **Q: Can I change the keyboard shortcut?**  
 A: Not directly through settings, but you can modify the script to use a different key.
