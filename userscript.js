@@ -37,7 +37,6 @@
         'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1920&h=1080&fit=crop&q=80',
         'https://images.unsplash.com/photo-1581540222194-0def2dda95b8?w=1920&h=1080&fit=crop&q=80',
         'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1605645861394-e2ada31a82db?w=1920&h=1080&fit=crop&q=80'
     ];
 
     // === LOAD CONFIGURATION ===
