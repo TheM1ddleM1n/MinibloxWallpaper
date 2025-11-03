@@ -7,6 +7,9 @@
 // @grant        none
 // @run-at       document-start
 // @version      9.1
+// @homepageURL  https://github.com/TheM1ddleM1n/MinibloxWallpaper
+// @downloadURL  https://github.com/TheM1ddleM1n/MinibloxWallpaper/raw/main/userscript.js
+// @updateURL    https://github.com/TheM1ddleM1n/MinibloxWallpaper/raw/main/userscript.js
 // ==/UserScript==
 
 (function() {
@@ -34,6 +37,7 @@
         'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1920&h=1080&fit=crop&q=80',
         'https://images.unsplash.com/photo-1581540222194-0def2dda95b8?w=1920&h=1080&fit=crop&q=80',
         'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1605645861394-e2ada31a82db?w=1920&h=1080&fit=crop&q=80'
     ];
 
     // === LOAD CONFIGURATION ===
