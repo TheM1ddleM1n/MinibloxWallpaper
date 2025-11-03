@@ -1,153 +1,168 @@
 // ==UserScript==
-// @name         Miniblox.io Auto Wallpaper Rotator (v7.2 Optimized)
+// @name         Miniblox.io Auto Wallpaper Rotator (v9.1 Smooth)
 // @namespace    http://github.com/TheM1ddleM1n
-// @description  Automatically changes wallpaper every reload — smoother loading, smarter caching, and improved performance.
+// @description  Lightweight wallpaper rotator with smooth transitions and no flashing.
 // @author       Vicky_arut, TheM1ddleM1n
 // @match        https://miniblox.io/
 // @grant        none
 // @run-at       document-start
-// @version      7.2
+// @version      9.1
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    // === CONFIGURATION ===
-    const PRESETS = [
-        'https://picsum.photos/id/1003/1920/1080',
-        'https://picsum.photos/id/1015/1920/1080',
-        'https://picsum.photos/id/1018/1920/1080',
-        'https://picsum.photos/id/1021/1920/1080',
-        'https://picsum.photos/id/1036/1920/1080',
-        'https://picsum.photos/id/1043/1920/1080',
-        'https://picsum.photos/id/1056/1920/1080',
-        'https://picsum.photos/id/1069/1920/1080',
-        'https://picsum.photos/id/1074/1920/1080',
-        'https://picsum.photos/id/1084/1920/1080',
-        'https://picsum.photos/id/1080/1920/1080',
-        'https://picsum.photos/id/110/1920/1080',
-        'https://picsum.photos/id/111/1920/1080',
-        'https://picsum.photos/id/112/1920/1080',
-        'https://picsum.photos/id/113/1920/1080',
-        'https://picsum.photos/id/114/1920/1080',
-        'https://picsum.photos/id/115/1920/1080',
-        'https://picsum.photos/id/116/1920/1080',
-        'https://picsum.photos/id/117/1920/1080',
-        'https://picsum.photos/id/118/1920/1080',
-        'https://picsum.photos/id/119/1920/1080'
+    // === WALLPAPER COLLECTION (VERIFIED CARS) ===
+    const DEFAULT_WALLPAPERS = [
+        'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1542362567-b07e54358753?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1547744152-14d985cb937f?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1612825173281-9a193378527e?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1537984822441-cff330075342?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1581540222194-0def2dda95b8?w=1920&h=1080&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&q=80',
     ];
 
-    const BACKUP_URLS = [
-        'https://picsum.photos/1920/1080?random=20',
-        'https://picsum.photos/1920/1080?random=21',
-        'https://picsum.photos/1920/1080?random=22'
-    ];
+    // === LOAD CONFIGURATION ===
+    const custom = JSON.parse(localStorage.getItem('miniblox_custom_wallpapers') || '[]');
+    const wallpapers = Array.isArray(custom) && custom.length > 0 ? custom : DEFAULT_WALLPAPERS;
+    const cycleMode = localStorage.getItem('miniblox_cycle_mode') !== 'false';
 
-    const CYCLE_MODE = true;
-    const INDEX_KEY = 'miniblox_wallpaper_index_v3';
-    const MAX_RETRIES = 3;
-
-    // === INDEX SELECTION ===
-    let nextIndex;
-    if (CYCLE_MODE) {
-        const lastIndex = parseInt(localStorage.getItem(INDEX_KEY) || '-1', 10);
-        nextIndex = (isNaN(lastIndex) ? 0 : (lastIndex + 1) % PRESETS.length);
-    } else {
-        nextIndex = Math.floor(Math.random() * PRESETS.length);
-    }
-    localStorage.setItem(INDEX_KEY, nextIndex.toString());
-
-    let wallpaperUrl = PRESETS[nextIndex];
-
-    // === LOCAL CACHING ===
-    const preloadImage = (url) => {
+    // === PRELOAD ALL WALLPAPERS ===
+    wallpapers.forEach(function(url) {
         const img = new Image();
         img.src = url;
-    };
-    PRESETS.forEach(preloadImage);
+    });
 
-    // === VERIFY IMAGE URL WORKS ===
-    async function verifyImage(url, retries = 0) {
-        try {
-            const res = await fetch(url, { method: 'HEAD' });
-            if (res.ok) return url;
-            throw new Error('Bad response');
-        } catch {
-            if (retries < MAX_RETRIES) {
-                const fallback = BACKUP_URLS[Math.floor(Math.random() * BACKUP_URLS.length)];
-                console.warn(`[Wallpaper Rotator] Failed to load ${url}, retrying with backup ${fallback}`);
-                return verifyImage(fallback, retries + 1);
-            } else {
-                console.error('[Wallpaper Rotator] All fallbacks failed.');
-                return 'https://picsum.photos/1920/1080';
-            }
-        }
+    // === SELECT WALLPAPER ===
+    let index;
+    if (cycleMode) {
+        const last = parseInt(localStorage.getItem('miniblox_wallpaper_index') || '-1');
+        index = (last + 1) % wallpapers.length;
+        localStorage.setItem('miniblox_wallpaper_index', index);
+    } else {
+        index = Math.floor(Math.random() * wallpapers.length);
     }
 
-    // === MAIN EXECUTION ===
-    verifyImage(wallpaperUrl).then((verifiedUrl) => {
-        wallpaperUrl = verifiedUrl;
+    const wallpaper = wallpapers[index];
 
-        const style = document.createElement('style');
-        style.textContent = `
-            body::before {
-                content: '';
-                position: fixed;
-                top: 0; left: 0;
-                width: 100%; height: 100%;
-                background-image: url("${wallpaperUrl}") !important;
-                background-size: cover !important;
-                background-position: center center !important;
-                background-repeat: no-repeat !important;
-                aspect-ratio: 16/9;
-                z-index: -1;
-                transition: opacity 0.5s ease;
-            }
-            body {
-                background: transparent !important;
-            }
-            img[src*="/assets/default-DKNlYibk.png"] {
-                display: none !important;
-            }
-        `;
-        (document.head || document.documentElement).prepend(style);
-
-        // === DEBOUNCED MUTATION OBSERVER ===
-        let debounceTimer;
-        const applyFixes = () => {
-            document.querySelectorAll('img').forEach(img => {
-                if (img.src && img.src.includes('/assets/default-DKNlYibk.png')) {
-                    img.src = wallpaperUrl;
-                }
-            });
-            document.querySelectorAll('[style]').forEach(el => {
-                const s = el.getAttribute('style');
-                if (s && s.includes('default-DKNlYibk.png')) {
-                    el.setAttribute('style', s.replace(/url\(([^)]+default-DKNlYibk\.png[^)]*)\)/g, `url("${wallpaperUrl}")`));
-                }
-            });
-        };
-
-        const observer = new MutationObserver(() => {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(applyFixes, 200);
-        });
-
-        const startObserver = () => {
-            observer.observe(document.documentElement || document.body, {
-                childList: true,
-                subtree: true,
-                attributes: true,
-                attributeFilter: ['src', 'style']
-            });
-        };
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', startObserver, { once: true });
-        } else {
-            startObserver();
+    // === APPLY WALLPAPER WITH SMOOTH TRANSITION ===
+    const style = document.createElement('style');
+    style.textContent = `
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
         }
+        body::before {
+            background-image: url("${wallpaper}");
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body::after {
+            background-image: url("${wallpaper}");
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.transitioning::before {
+            opacity: 0;
+        }
+        body.transitioning::after {
+            opacity: 1;
+        }
+        body {
+            background: #000 !important;
+        }
+        img[src*="default-DKNlYibk.png"],
+        [style*="default-DKNlYibk.png"] {
+            display: none !important;
+        }
+    `;
+    (document.head || document.documentElement).appendChild(style);
 
-        console.log('%c[Miniblox Wallpaper Rotator]%c Applied wallpaper:', 'color:#4CAF50;font-weight:bold;', 'color:inherit;', wallpaperUrl);
+    // === KEYBOARD SHORTCUT (Press \ to change wallpaper) ===
+    document.addEventListener('keydown', function(e) {
+        if (e.key === '\\' && !e.ctrlKey && !e.altKey && !e.metaKey) {
+            const target = e.target;
+            // Ignore if typing in input/textarea
+            if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) {
+                return;
+            }
+
+            e.preventDefault();
+
+            // Cycle to next wallpaper
+            const current = parseInt(localStorage.getItem('miniblox_wallpaper_index') || '0');
+            const next = (current + 1) % wallpapers.length;
+            localStorage.setItem('miniblox_wallpaper_index', next);
+
+            // Get the new wallpaper URL
+            const nextWall = wallpapers[next];
+
+            // Update ::after with new image
+            const beforeMatch = style.textContent.match(/body::before[^}]*background-image: url\("([^"]+)"\)/);
+            const currentBefore = beforeMatch ? beforeMatch[1] : wallpaper;
+
+            style.textContent = style.textContent.replace(
+                /body::after[^}]*background-image: url\("[^"]+"\)/,
+                'body::after {\n            background-image: url("' + nextWall + '")'
+            );
+
+            // Start transition
+            document.body.classList.add('transitioning');
+
+            // After transition completes, swap images
+            setTimeout(function() {
+                style.textContent = style.textContent.replace(
+                    /body::before[^}]*background-image: url\("[^"]+"\)/,
+                    'body::before {\n            background-image: url("' + nextWall + '")'
+                );
+                document.body.classList.remove('transitioning');
+            }, 500);
+
+            console.log('%c[Miniblox] Wallpaper changed (' + (next + 1) + '/' + wallpapers.length + ')', 'color:#4CAF50');
+        }
     });
+
+    // === CONSOLE API ===
+    window.minibloxWallpaper = {
+        set: function(urls) {
+            localStorage.setItem('miniblox_custom_wallpapers', JSON.stringify(urls));
+            location.reload();
+        },
+        clear: function() {
+            localStorage.removeItem('miniblox_custom_wallpapers');
+            location.reload();
+        },
+        mode: function(m) {
+            localStorage.setItem('miniblox_cycle_mode', m === 'cycle');
+            location.reload();
+        },
+        reset: function() {
+            localStorage.removeItem('miniblox_wallpaper_index');
+            localStorage.removeItem('miniblox_cycle_mode');
+            localStorage.removeItem('miniblox_custom_wallpapers');
+            location.reload();
+        }
+    };
+
+    console.log('%c[Miniblox Wallpaper]%c ' + wallpaper, 'color:#4CAF50;font-weight:bold', 'color:#666');
 })();
