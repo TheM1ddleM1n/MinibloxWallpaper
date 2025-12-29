@@ -1,177 +1,157 @@
 # 🎨 Ultimate MiniBlox Wallpaper Rotator
 
-[![Version](https://img.shields.io/badge/version-9.1-4CAF50)](https://github.com/TheM1ddleM1n/MinibloxWallpaper)
+[![Version](https://img.shields.io/badge/version-10.0-4CAF50)](https://github.com/TheM1ddleM1n/MinibloxWallpaper)
 [![License](https://img.shields.io/badge/license-Personal%20Use-blue)](https://github.com/TheM1ddleM1n/MinibloxWallpaper)
 
-A **lightweight userscript** that transforms your **[miniblox.io](https://miniblox.io/)** experience with **stunning HD car wallpapers** and smooth transitions!
+A **clean, flash-free userscript** that transforms your **[miniblox.io](https://miniblox.io/)** experience with **stunning HD car wallpapers**, **true smooth crossfades**, and **zero UI flicker**.
 
 ---
 
-## ✨ Features
+## ✨ Features (v10.0 Clean Edition)
 
-✅ **20 Premium Car Wallpapers** — Curated collection of high-quality automotive photography  
-✅ **Instant Wallpaper Switching** — Press `\` (backslash) to cycle through wallpapers without reload  
-✅ **Smooth Crossfade Transitions** — No white flashing, buttery-smooth image changes  
-✅ **Smart Preloading** — All images cached on load for zero-delay switching  
-✅ **Custom Wallpaper Support** — Add your own image URLs via console  
-✅ **Sequential or Random Mode** — Choose your preferred rotation style  
-✅ **Ultra Lightweight** — Minimal performance impact, loads in milliseconds  
+- ✅ Premium HD car wallpapers (curated automotive photography)
+- ✅ Instant wallpaper switching with `\` (backslash)
+- ✅ True smooth crossfade (dual-layer CSS, no flashing)
+- ✅ Decode-safe image preloading
+- ✅ Custom wallpaper URL support
+- ✅ Cycle or random rotation modes
+- ✅ Configurable fade duration
+- ✅ Optional auto-rotate timer
+- ✅ Ultra lightweight & GPU-friendly
+- ✅ Clean architecture (CSS variables, no regex hacks)
 
 ---
 
 ## 🚀 Installation
 
-### Step 1: Install a Userscript Manager
-Choose one of these browser extensions:
-- **[Tampermonkey](https://tampermonkey.net/)** (Recommended)
+### Step 1: Install a userscript manager
+
+- **[Tampermonkey](https://tampermonkey.net/)** (recommended)
 - **[Violentmonkey](https://violentmonkey.github.io/)**
 - **[Greasemonkey](https://www.greasespot.net/)** (Firefox only)
 
-### Step 2: Install the Script
-**[Click here to install](https://github.com/TheM1ddleM1n/MinibloxWallpaper/raw/main/userscript.js)**
+### Step 2: Install the script
+
+➡ **[Click here to install](https://github.com/TheM1ddleM1n/MinibloxWallpaper/raw/main/userscript.js)**
 
 ### Step 3: Visit MiniBlox
-Go to **[miniblox.io](https://miniblox.io)** and enjoy your new wallpaper!
+
+Open **https://miniblox.io** — wallpapers apply instantly.
 
 ---
 
 ## ⌨️ Keyboard Shortcut
 
-**Press `\` (backslash key)** to instantly cycle to the next wallpaper — no page reload needed!
+Press **`\` (backslash)** to instantly switch to the next wallpaper.
+
+- No reload  
+- No flicker  
+- Automatically disabled while typing in chat or inputs  
 
 ---
 
-## 🎛️ Configuration
+## 🎛️ Configuration (Console API)
 
-Open your browser console (F12) and use these commands:
+Open DevTools (`F12`) → **Console**
 
-### Add Custom Wallpapers
-```javascript
+### Set custom wallpapers
+
+```js
 minibloxWallpaper.set([
   'https://example.com/car1.jpg',
-  'https://example.com/car2.jpg',
-  'https://example.com/car3.jpg'
+  'https://example.com/car2.jpg'
 ]);
 ```
 
-### Switch to Random Mode
-```javascript
-minibloxWallpaper.mode('random');
-```
-
-### Switch to Sequential Mode (Default)
-```javascript
-minibloxWallpaper.mode('cycle');
-```
-
-### Clear Custom Wallpapers
-```javascript
-minibloxWallpaper.clear();
-```
-
-### Reset All Settings
-```javascript
-minibloxWallpaper.reset();
-```
-
----
-
 ## 🏎️ Wallpaper Collection
+The default collection includes HD Unsplash automotive photography, featuring:
 
-The default collection features 20 stunning car wallpapers from Unsplash, including:
-- 🏁 Sports cars and supercars
+- 🏁 Sports cars & supercars
+
 - 🚗 Luxury vehicles
-- 🌃 Various angles and lighting conditions
-- 📸 Professional automotive photography
 
-All images are high-quality (1920x1080) and optimized for fast loading.
+- 🌃 Night & studio lighting
 
----
+- 📸 Professional 1920×1080 images
 
-## 🔧 How It Works
+- Images are optimized for fast decoding and smooth transitions.
 
-1. **Preloading** — All wallpapers are preloaded on page load for instant switching
-2. **Dual-Layer System** — Uses CSS `::before` and `::after` pseudo-elements for smooth crossfade
-3. **Smart Caching** — Browser caches images automatically for persistent performance
-4. **Keyboard Control** — Direct wallpaper switching without page reload
+## 🔧 How It Works (v10 Architecture)
+- Decode-safe preload
+- Images are fully decoded before being displayed.
 
----
+- Dual-layer rendering
+- Uses body::before (current) and body::after (next).
+
+- CSS variables
+--wallpaper-current and --wallpaper-next handle transitions cleanly.
+
+- GPU-friendly transitions
+- Opacity-only animations for smooth performance.
+
+- Zero DOM mutation
+- No observers, no layout thrashing, no injected elements.
 
 ## 🤝 Contributing
+Contributions are welcome:
 
-Contributions are welcome! Here's how you can help:
+- 🐛 Bug reports — open an issue
 
-- 🐛 **Report bugs** — Found an issue? [Open an issue](https://github.com/TheM1ddleM1n/MinibloxWallpaper/issues)
-- 🌟 **Suggest features** — Have an idea? Let us know!
-- 📸 **Submit wallpapers** — Share your favorite car images
-- 🔧 **Submit pull requests** — Code improvements are appreciated
+- 💡 Feature suggestions
 
----
+- 📸 Wallpaper submissions (HD automotive only)
+
+- 🔧 Pull requests (clean, readable code)
 
 ## 👥 Credits
+Original Author:
+Vicky_arut — [Greasyfork - vicky-arut](https://greasyfork.org/en/users/1371112-vicky-arut)
 
-- **Original Author:** [Vicky_arut](https://greasyfork.org/en/users/1371112-vicky-arut) *(GreasyFork)*
-- **Enhanced by:** [TheM1ddleM1n](https://github.com/TheM1ddleM1n) *(GitHub)*
-- **Wallpapers:** [Unsplash](https://unsplash.com/) *(Free high-quality photography)*
+Clean Edition & Enhancements:
+TheM1ddleM1n — [Github - TheM1ddleM1n](https://github.com/TheM1ddleM1n)
 
-Special thanks to the **MiniBlox community** for feedback and support! ❤️
+Wallpapers:
+[Unsplash](https://unsplash.com)
 
----
+Special thanks to the MiniBlox community ❤️
 
 ## 📜 License
+Personal use only. Redistribution prohibited.
 
-**Personal use only. Redistribution prohibited.**
-
-Please credit the authors if you fork or modify this project.
-
----
+Please credit the authors if you fork or modify.
 
 ## 🔗 Links
+[GitHub Repository](https://github.com/TheM1ddleM1n/MinibloxWallpaper)
 
-- 🧩 **[GitHub Repository](https://github.com/TheM1ddleM1n/MinibloxWallpaper)**
-- 🚀 **[Latest Release](https://github.com/TheM1ddleM1n/MinibloxWallpaper/releases/latest)**
-- 🐛 **[Report Issues](https://github.com/TheM1ddleM1n/MinibloxWallpaper/issues)**
-- 💬 **[Discussions](https://github.com/TheM1ddleM1n/MinibloxWallpaper/discussions)**
+[Latest Release](https://github.com/TheM1ddleM1n/MinibloxWallpaper/releases/latest)
 
----
-
-## ❓ FAQ
-
-**Q: The wallpaper isn't showing?**  
-A: Make sure your userscript manager is enabled and the script is active on miniblox.io
-
-**Q: Can I use my own wallpapers?**  
-A: Yes! Use `minibloxWallpaper.set([...])` in the console with your image URLs.
-
-**Q: Does this work on mobile?**  
-A: The script works on mobile browsers that support userscript managers (e.g., Firefox + Tampermonkey).
-
-**Q: Why do some wallpapers load slowly?**  
-A: All 20 wallpapers are preloaded automatically on first visit. After that, they're cached and load instantly!
-
-**Q: Can I change the keyboard shortcut?**  
-A: Not directly through settings, but you can modify the script to use a different key.
-
----
+[Report Issues](https://github.com/TheM1ddleM1n/MinibloxWallpaper/issues)
 
 ## 📊 Changelog
+v10.0 — Clean Edition (Latest)
+✨ Full refactor using CSS variables
 
-### v9.1 (Latest)
-- ✨ Added smooth crossfade transitions
-- ✨ Implemented instant wallpaper switching with `\` key
-- ✨ Added preloading for all wallpapers
-- 🐛 Fixed white flashing issue
-- 🐛 Replaced broken image links
-- ⚡ Improved performance and reduced code size
+✨ True crossfade with dual-layer rendering
 
-### v9.0
-- ✨ Complete rewrite for better performance
-- ✨ Added custom wallpaper support
-- ✨ Added console API for easy configuration
-- 🔧 Reduced script size by 60%
+✨ Decode-safe preloading
 
----
+✨ Configurable fade duration
 
-Made with ❤️ for the MiniBlox community!
+✨ Optional auto-rotation timer
 
-**Enjoy your new wallpapers!** 🎉
+🐛 Eliminated flicker and white flashing
+
+🧼 Removed regex-based CSS editing
+
+⚡ Improved performance and maintainability
+
+## v9.1
+✨ Added smooth transitions
+
+✨ Keyboard switching
+
+🐛 Fixed broken images
+
+**Made with ❤️ for the MiniBlox community.**
+
+**Enjoy your wallpapers! 🎉**
